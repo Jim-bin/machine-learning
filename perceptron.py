@@ -40,3 +40,21 @@ def perceptron():
     return (w0, b0)
     
 perceptron()
+
+
+# 预测函数
+def prediction():
+    w, b = perceptron()  # 首先调用训练函数，得到模型参数w和b
+    while True:  # 开始预测，直到输入q退出
+        the_example = []
+        the_input = input("Please input you test example like that: x1 x2\n")
+        if the_input == 'q': break  # 输入q之后结束循环
+        the_example += [float(n) for n in the_input.split(' ')]  # 将输入的字符串转化为数字列表
+        judge = w[0] * the_example[0] + w[1] * the_example[1] + b   # 带入模型参数进行预测
+        if judge > 0:  # 如果大于0，则输出1；小于0，则输出-1
+            predict = 1
+        else:
+            predict = -1
+        print("predict ==> %d" % predict)
+
+prediction()
